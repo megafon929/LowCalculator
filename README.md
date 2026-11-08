@@ -32,9 +32,7 @@ gradle wrapper      # once, generates gradlew
 
 The APK is written to `app/build/outputs/apk/release/`. Build the **release** variant to check the size (R8 + shrinkResources); the debug build is noticeably larger. The release build is signed with the debug key, so use your own key for publishing. Only the v1 signature is used, since Android 4.x does not understand newer schemes.
 
-GitHub Actions (`.github/workflows/build.yml`) builds the release APK on every push and uploads it as an artifact.
-
 ## Credits
 
-- Architecture and icon: m929
+- Architecture and icon: MegaFon929
 - Code and the rest of the project (build setup, localization, documentation, CI): Claude (Anthropic)
