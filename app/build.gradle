@@ -1,0 +1,62 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.m929.lowcalculator'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'com.m929.lowcalculator'
+        minSdk 15
+        targetSdk 19
+        versionCode 1
+        versionName '1.0'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // Android 4.x понимает только v1-подпись; лишние блоки подписи только раздувают APK.
+    signingConfigs {
+        debug {
+            enableV2Signing = false
+            enableV3Signing = false
+            enableV4Signing = false
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // Подписываем отладочным ключом, чтобы release-APK сразу ставился на устройство.
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    // Без метаданных зависимостей в APK (их нет, и блок не нужен).
+    dependenciesInfo {
+        includeInApk = false
+        includeInBundle = false
+    }
+
+    packagingOptions {
+        resources {
+            excludes += ['META-INF/*.version', 'META-INF/MANIFEST.MF']
+        }
+    }
+
+    lint {
+        // targetSdk 19 намеренно: проект рассчитан на Android 4.0.3 – 4.4.4.
+        abortOnError false
+        disable 'ExpiredTargetSdkVersion', 'OldTargetApi'
+    }
+}
+
+// Зависимостей нет: ни androidx, ни Kotlin.
+dependencies {
+}
