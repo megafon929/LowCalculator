@@ -32,9 +32,7 @@ gradle wrapper      # один раз, создаст gradlew
 
 APK: `app/build/outputs/apk/release/`. Для проверки размера собирайте именно **release** (R8 + shrinkResources); debug-сборка заметно больше. Release подписывается отладочным ключом, для публикации подставьте свой. Подпись только v1, так как Android 4.x другие схемы не понимает.
 
-GitHub Actions (`.github/workflows/build.yml`) собирает release-APK при каждом push и прикладывает его как артефакт.
-
 ## Авторство
 
-- Архитектура и иконка: m929
+- Архитектура и иконка: MegaFon929
 - Код и всё остальное (настройка сборки, локализация, документация, CI): Claude (Anthropic)
